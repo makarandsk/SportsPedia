@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+
+<body>
+	<h1>Find Answers of Your Favourite Sport Cricket</h1>
+
+    <form action="{{ url_for('cricket')}}" method="post">
+        <p>
+            Select your question:
+            <SELECT name="qid">
+                {% for q in question_c %}
+                    <OPTION value="{{ q['question'] }}">{{ q['question'] }}</OPTION>
+                {% endfor %}
+            </SELECT>
+        </p>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Find</button>
+
+        <button type="button" class="btn btn-secondary btn-block btn-large" onclick="resetForm()">Reset</button>
+
+    </form>
+
+    <br>
+    Here is your answer:
+    <br>
+    {{answer_det}}
+   <br>
+   <br>
+   <br>
+   <button type="button" class="btn btn-secondary btn-block btn-large" onclick="update_c()">Update</button>
+   <br>
+   <br>
+   <button type="button" class="btn btn-secondary btn-block btn-large" onclick="back()">BACK</button>
+
+<script>
+    function resetForm() {
+        window.location.href = "{{ url_for('cricket') }}";
+    }
+
+    function back() {
+        window.location.href = "{{ url_for('index') }}";
+    }
+
+    function update_c() {
+        window.location.href = "{{ url_for('update_cricket') }}";
+    }    
+</script>
+
+</body>
+</html>

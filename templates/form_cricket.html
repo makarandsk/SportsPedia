@@ -1,0 +1,113 @@
+<html>
+<head>
+    
+    <title>Find Answers of Your Favourite Sport Cricket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 12px;
+            display: block; /* Make the button a block-level element */
+        }
+
+        button[type="button"] {
+            background-color: #808080;
+        }
+
+        button[type="button"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Find Answers of Your Favourite Sport Cricket</h1>
+
+    <form action="{{ url_for('cricket')}}" method="post">
+        <p>
+            Select your question:
+            <select name="qid">
+                {% for q in question_c %}
+                    <option value="{{ q['question'] }}">{{ q['question'] }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <button type="submit">Find</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+
+        <br>
+        Here is your answer:
+        <br>
+        <b>{{answer_det}}</b>
+        <br>
+        <br>
+        <br>
+        <button type="button" onclick="update_c()">Update</button>
+        <br>
+        <br>
+        <button type="button" onclick="back()">BACK</button>
+    </form>
+
+    <script>
+        function resetForm() {
+            window.location.href = "{{ url_for('cricket') }}";
+        }
+
+        function back() {
+            window.location.href = "{{ url_for('index') }}";
+        }
+
+        function update_c() {
+            window.location.href = "{{ url_for('update_cricket') }}";
+        }    
+    </script>
+
+</body>
+</html>

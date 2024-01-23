@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportsPedia</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            color: #0066cc;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease-in-out; 
+        }
+
+        .image-container a {
+            width: 40%;
+            display: block;
+            text-decoration: none;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1><u>SportsPedia</u></h1>
+
+    <div class="image-container">
+        <a href="{{ url_for('cricket')}}"><img src="static\cricket.png" alt="Image 1"></a>
+        <a href="{{ url_for('football')}}"><img src="static\football.png" alt="Image 2"></a>
+        <a href="{{ url_for('hockey')}}"><img src="static\hockey.png" alt="Image 3"></a>
+    </div>
+</body>
+</html>
